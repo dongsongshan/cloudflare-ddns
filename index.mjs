@@ -2,7 +2,9 @@ import 'dotenv/config'
 import Cddnss from 'cloudflare-ddns-sync'
 
 const MY_TOKEN = process.env.CLOUDFLARE_TOKEN;
-const MY_DOMAIN = process.env.DOMAIN;
+const MY_ROOT_DOMAIN = process.env.ROOT_DOMAIN;
+const MY_SUB_DOMAIN = process.env.SUB_DOMAIN;
+const MY_DOMAIN = `${MY_SUB_DOMAIN}.${MY_ROOT_DOMAIN}`;
 
 //实例化
 const cddnss = new Cddnss({
@@ -13,7 +15,7 @@ const cddnss = new Cddnss({
 const localIp = await cddnss.getIp()
 
 //获取解析的域名
-const recordsOnline = await cddnss.getRecordDataForDomain(MY_DOMAIN)
+const recordsOnline = await cddnss.getRecordDataForDomain(MY_ROOT_DOMAIN)
 
 
 
