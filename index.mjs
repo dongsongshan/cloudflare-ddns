@@ -4,7 +4,6 @@ import Cddnss from 'cloudflare-ddns-sync'
 const MY_TOKEN = process.env.CLOUDFLARE_TOKEN;
 const MY_ROOT_DOMAIN = process.env.ROOT_DOMAIN;
 const MY_SUB_DOMAIN = process.env.SUB_DOMAIN;
-const MY_DOMAIN = `${MY_SUB_DOMAIN}.${MY_ROOT_DOMAIN}`;
 
 //实例化
 const cddnss = new Cddnss({
@@ -20,7 +19,7 @@ const recordsOnline = await cddnss.getRecordDataForDomain(MY_ROOT_DOMAIN)
 
 
 const oneRecordArr =  recordsOnline.filter(record=>{
-  return record.name == MY_DOMAIN && record.type == 'A'
+  return record.name == MY_SUB_DOMAIN && record.type == 'A'
 })
 
 // dns解析的ip
@@ -31,7 +30,7 @@ console.log('dns解析的ip',onlineIp)
 
 if(localIp != onlineIp ){
   const myRecord = {
-    name: MY_DOMAIN,
+    name: MY_SUB_DOMAIN,
     type: "A",
     content: localIp
   }
