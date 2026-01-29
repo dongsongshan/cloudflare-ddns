@@ -35,4 +35,5 @@ if(localIp != onlineIp ){
     content: localIp
   }
   const result = await cddnss.syncRecord(myRecord)
+  console.log('更新结果',result)
 }
