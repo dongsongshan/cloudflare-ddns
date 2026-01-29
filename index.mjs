@@ -1,7 +1,8 @@
+import 'dotenv/config'
 import Cddnss from 'cloudflare-ddns-sync'
 
-const MY_TOKEN = progress.env.CLOUDFLARE_TOKEN;
-const MY_DOMAIN = progress.env.DOMAIN;
+const MY_TOKEN = process.env.CLOUDFLARE_TOKEN;
+const MY_DOMAIN = process.env.DOMAIN;
 
 //实例化
 const cddnss = new Cddnss({
