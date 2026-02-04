@@ -23,3 +23,7 @@ crontab -e
 分 时 天 月 周
 */5 * * * * node /path/to/cloudflare-ddns/index.mjs
 ```
+
+```
+*/5 * * * * /bin/bash -lc 'cd /home/ubuntu/cloudflare-ddns && echo "==== $(date -Is) ====" && /usr/bin/node index.mjs' >> /home/ubuntu/cloudflare-ddns/cron.log 2>&1
+```
