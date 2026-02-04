@@ -1,13 +1,13 @@
 import 'dotenv/config'
 import Cddnss from 'cloudflare-ddns-sync'
 
-const MY_TOKEN = process.env.CLOUDFLARE_TOKEN;
+const MY_TOKEN = process.env.CLOUDFLARE_API_TOKEN || process.env.CLOUDFLARE_TOKEN;
 const MY_ROOT_DOMAIN = process.env.ROOT_DOMAIN;
 const MY_SUB_DOMAIN = process.env.SUB_DOMAIN;
 
-//实例化
+// 实例化（cloudflare v3 SDK 需要 apiToken 字段）
 const cddnss = new Cddnss({
-  token: MY_TOKEN,
+  apiToken: MY_TOKEN,
 });
 
 // 获取本地ip
